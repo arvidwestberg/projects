@@ -40,6 +40,7 @@ include('check_login.php');
             // drop table
             echo "<form action='drop_table.php' method='POST'>";
             echo "<input type='hidden' name='table' value='$table'>";
+            echo "<input type='hidden' name='droptable' value='true'>";
             echo "<input type='hidden' name='website' value='view_table.php'>";
             echo "<input type='submit' value='Drop $table table'>";
             echo "<input type='checkbox' checked name='newTable' value='$table'>and create new";
@@ -54,20 +55,33 @@ include('check_login.php');
                 echo "<p>Table is empty</p>";
                 continue;
             }
+
             // Display table content
             echo "<table style='border-collapse: collapse;'>";
-            // echo the column name
             echo "<tr>";
+
+            // echo the column name
             foreach ($content[0] as $key => $value) {
                 echo "<th style='border: 1px solid black;'>$key</th>";
             }
+            echo "<th style='border: 1px solid black;'>Delete post</th>";
             echo "</tr>";
+
             // echo the content
             foreach ($content as $row) {
                 echo "<tr>";
                 foreach ($row as $key => $value) {
                     echo "<td style='border: 1px solid black;'>$value</td>";
                 }
+                echo "<td style='border: 1px solid black;'>";
+                echo "<form action='delete_post.php' method='POST'>";
+                echo "<input type='hidden' name='row' value='$row[id]'>";
+                echo "<input type='hidden' name='deletePost' value='true'>";
+                echo "<input type='hidden' name='website' value='view_table.php'>";
+                echo "<button class='btn red-btn btn-small m-auto' type='submit' name='table' value='$table'>Delete</button>";
+                echo "</td>";
+                echo "</tr>";
+                echo "</form>";
             }
             echo "</table>";
         }

@@ -25,8 +25,6 @@ include('dbconnection.php');
         $username = htmlspecialchars($_POST['username']);
         $password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
         $taken_username = false;
-        echo "name1: $name <br>";
-        echo "username1: $username <br><br>";
 
         $_SESSION['name'] = $name;
         $_SESSION['username'] = $username;
@@ -53,8 +51,6 @@ include('dbconnection.php');
                 $sql = "INSERT INTO users (name, username, password, admin, latest_login) 
       VALUES (?, ?, ?, ?, now())";
                 $stmt = $dbconn->prepare($sql);
-                echo "name2: $name <br>";
-                echo "username2: $username <br>";
                 $data = array($name, $username, $password, 0);
                 $stmt->execute($data);
 

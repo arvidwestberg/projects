@@ -36,6 +36,7 @@ try {
         if ($_POST['newTable'] == "questions") {
             /* questions table */
             $sql = "CREATE TABLE questions (
+                id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         quiz_nr INT(6) UNSIGNED,
         question_nr INT(1),
         question VARCHAR(50),
@@ -43,7 +44,7 @@ try {
         answer2 VARCHAR(30),
         answer3 VARCHAR(30),
         correct int(1),
-        FOREIGN KEY (quiz_nr) REFERENCES quiz(id)
+        FOREIGN KEY (quiz_nr) REFERENCES quiz(id) ON DELETE CASCADE
         )";
             $dbconn->exec($sql);
         }
@@ -59,7 +60,7 @@ try {
         q_amount int(1),
         time DECIMAL(5, 1),
         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users(id)
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         )";
             $dbconn->exec($sql);
         }
