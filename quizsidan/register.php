@@ -25,6 +25,8 @@ include('dbconnection.php');
         $username = htmlspecialchars($_POST['username']);
         $password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
         $taken_username = false;
+        echo "name1: $name <br>";
+        echo "username1: $username <br><br>";
 
         $_SESSION['name'] = $name;
         $_SESSION['username'] = $username;
@@ -40,47 +42,44 @@ include('dbconnection.php');
         $usernames = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
         # loop through the usernames
-        foreach ($usernames as $name) {
-            if ($name == $_POST['username']) {
+        foreach ($usernames as $u_name) {
+            if ($u_name == $username) {
                 $taken_username = true;
-                echo "<script>alert('Username is already taken');</script>";
             }
         }
+        if (!$taken_username) {
 
-        try {
-            $sql = "INSERT INTO users (name, username, password, admin, latest_login) 
+            try {
+                $sql = "INSERT INTO users (name, username, password, admin, latest_login) 
       VALUES (?, ?, ?, ?, now())";
-            $stmt = $dbconn->prepare($sql);
-            $data = array($name, $username, $password, 0);
-            $stmt->execute($data);
-
-            $_SESSION['admin'] = 0;
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
-            $_SESSION['name'] = $name;
-
-            // if ($dbconn->lastInsertId() == 1) {
-            //     $sql = "UPDATE users SET admin = 1 WHERE id = 1";
-            //     $stmt = $dbconn->prepare($sql);
-            //     $stmt->execute();
-            //     $_SESSION['admin'] = 1;
-            // }
-            // if lowercase(username) == admin
-            if ($username == "Tobias@admin") {
-                $sql = "UPDATE users SET admin = 1 WHERE username = ?";
                 $stmt = $dbconn->prepare($sql);
-                $data = array($username);
+                echo "name2: $name <br>";
+                echo "username2: $username <br>";
+                $data = array($name, $username, $password, 0);
                 $stmt->execute($data);
-                $_SESSION['admin'] = 1;
-            }
-            echo "Account created successfully! <br>";
-            $lastId = $dbconn->lastInsertId();
-            echo "redirecting in 5 seconds...<br>";
-            header("refresh:5;url=index.php");
-        } catch (PDOException $e) {
-            echo $sql . "<br>" . $e->getMessage();
-        }
 
+                $_SESSION['admin'] = 0;
+                $_SESSION['username'] = $username;
+                $_SESSION['password'] = $password;
+                $_SESSION['name'] = $name;
+
+                if ($username == "Tobias@admin") {
+                    $sql = "UPDATE users SET admin = 1 WHERE username = ?";
+                    $stmt = $dbconn->prepare($sql);
+                    $data = array($username);
+                    $stmt->execute($data);
+                    $_SESSION['admin'] = 1;
+                }
+                echo "Account created successfully! <br>";
+                $lastId = $dbconn->lastInsertId();
+                echo "redirecting in 5 seconds...<br>";
+                header("refresh:5;url=index.php");
+            } catch (PDOException $e) {
+                echo $sql . "<br>" . $e->getMessage();
+            }
+        } else {
+            echo "<script>alert('Användarnamnet är upptaget!');</script>";
+        }
         $dbconn = null;
     }
     echo "<br><br>";
