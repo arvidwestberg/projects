@@ -46,7 +46,8 @@ include('check_login.php');
                 $stmt->execute([$quiz_nr, $_POST['q' . $i], $i, $_POST['q' . $i . 'a1'], $_POST['q' . $i . 'a2'], $_POST['q' . $i . 'a3'], $_POST['q' . $i . 'correct']]);
             }
 
-            header("Location: create_quiz.php");
+            echo "<script>alert('Quiz created!')</script>";
+            header("refresh:0 url=create_quiz.php");
         } catch (PDOException $e) {
             echo "<br>";
             echo "Error: " . $e->getMessage();
@@ -55,82 +56,34 @@ include('check_login.php');
     }
 
     ?>
+    <h1 class="ta-center">Create your quiz</h1>
+    <form id="quizForm" method="POST" action="">
+        <div class="userInput w15">
 
-    <!-- html -->
-    <table id="createQuizParentTable">
-        <tr class="align-top">
-            <td class="w-fit">
-                <h1 style="text-align: center;">Create your Quiz</h1>
-                <div id="createQuizInfo" class="userInput w50">
+            <table>
+                <tr>
+                    <td>
+                        <label for="q_amount">Number of questions:</label>
+                        <input type="number" onclick="generateQuizCards()" name="qNumber" value="2" id="q_amount" min="1" max="10">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input placeholder="Quizname" type="text" id="quiz_name" name="quiz_name" required>
+                    </td>
+                </tr>
 
-                    <form action="" method="post">
+            </table>
+            <button class="btn green-btn" type="submit">Submit</button>
+        </div>
+        <br>
+        <div id="quizCardsContainer"></div>
+    </form>
 
-                        <!-- change number of questions -->
-                        <table>
-                            <tr>
-                                <td colspan="2">
-                                    <label for="questions">Number of questions (3-10)</label> <br>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input class="m-unset" type="number" name="qNumber" min="3" max="10" value="5">
-                                </td>
-                                <td>
-                                    <button class="btn blue-btn btn-small m-unset w100" type="submit" name="submit">Ändra</button>
-                                </td>
-                            </tr>
-                    </form>
-                    <form action="" method="post">
-
-                        <!-- quiz name -->
-        <tr>
-            <td colspan="2">
-                <input class="m-unset" type="text" name="quiz_name" id="quiz_name" max='30' placeholder="Quiz name" required>
-                
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-
-                <!-- submit -->
-                <button class='btn green-btn w100 mb-0' type='submit' name='submit'>Skapa quiz</button>
-            </td>
-
-        </tr>
-    </table>
-    </div>
-
-    </td>
-    <td class="w50 min-w-400">
-
-        <div id="questionContainer">
-            <br>
-
-            <?php
-
-            /* questions and answers */
-            for ($i = 1; $i <= $questions; $i++) {
-                echo '<div class="userInput m-auto w50 questionCard">';
-                echo '<input type="text" name="q' . $i . '" id="q' . $i . '"placeholder="Question ' . $i . '" maxlength=' . "50" . ' required><br>';
-                for ($j = 1; $j <= $answers; $j++) {
-                    echo '<input type="text" name="q' . $i . 'a' . $j . '" id="q' . $i . 'a' . $j . '"required placeholder="Answer ' . $j . '" maxlength=' . "30" . '><br>';
-                }
-                echo '<label for="q' . $i . 'correct">Correct answer</label> <br>';
-                echo '<select name="q' . $i . 'correct" id="q' . $i . 'correct">';
-                for ($k = 1; $k <= $answers; $k++) {
-                    echo '<option value="' . $k . '">' . $k . '</option>';
-                }
-                echo '</select><br>';
-                echo "</div><br><br>";
-            }
-            echo "<input type='hidden' name='qNumber' value='" . $questions . "'>";
-            echo '<br></div>';
-            ?>
-            </form>
-    </td>
-    </tr>
-    </table>
+    <script src="create_quiz.js"></script>
+    <script>
+        generateQuizCards();
+    </script>
 </body>
 
 </html>
