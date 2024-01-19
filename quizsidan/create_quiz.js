@@ -7,7 +7,7 @@ function generateQuizCards() {
     quizCardsContainer.innerHTML = "";
 
     // Generate new quiz cards 
-    for (var i = 1; i <= q_amount; i++) {
+    for (var i = 1; i <= q_amount; i++) { 
         var quizCard = document.createElement("div");
         quizCard.classList.add("quiz-card");
 

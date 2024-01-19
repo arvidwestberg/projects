@@ -17,7 +17,7 @@ include('check_login.php');
     <?php
     include('header.php');
 
-    $answers = 3; // Number of answers per question
+    $answers = 3; // Number of answers per question 
 
     if (isset($_POST['qNumber']) && !empty($_POST['qNumber'])) {
         $questions = $_POST['qNumber'];
