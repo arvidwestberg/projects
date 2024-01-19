@@ -68,13 +68,12 @@ try {
         if ($_POST['newTable'] == "websettings") {
             $sql = "CREATE TABLE websettings (
                 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                showCreatorName tinyint(1) NOT NULL,
-                showTest tinyint(1) NOT NULL
+                showCreatorName tinyint(1) NOT NULL
                 )";
             $dbconn->exec($sql);
 
-            $sql = "INSERT INTO websettings (showCreatorName, showTest)
-            VALUES (0, 0)";
+            $sql = "INSERT INTO websettings (showCreatorName)
+            VALUES (0)";
             $dbconn->exec($sql);
         }
     }
