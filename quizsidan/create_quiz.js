@@ -17,6 +17,7 @@ function generateQuizCards() {
         questionInput.name = "q" + i;
         questionInput.placeholder = "Question " + i;
         questionInput.required = true;
+        questionInput.setAttribute("maxlength", "30");
 
         var answerInputs = [];
         for (var j = 1; j <= 3; j++) {
@@ -26,6 +27,7 @@ function generateQuizCards() {
             answerInput.placeholder = "Answer " + j;
             answerInput.required = true;
             answerInputs.push(answerInput);
+            answerInput.setAttribute("maxlength", "30");
         }
         // select with options
         var correctAnswerSelect = document.createElement("select");
