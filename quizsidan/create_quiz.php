@@ -44,7 +44,8 @@ include('check_login.php');
                 $stmt->execute([$quiz_nr, $_POST['q' . $i], $i, $_POST['q' . $i . 'a1'], $_POST['q' . $i . 'a2'], $_POST['q' . $i . 'a3'], $_POST['q' . $i . 'correct']]);
             }
 
-            header("Location: create_quiz.php");
+            echo "<script>alert('Quiz created!')</script>";
+            header("refresh:0 url=create_quiz.php");
         } catch (PDOException $e) {
             echo "<br>";
             echo "Error: " . $e->getMessage();
@@ -61,7 +62,7 @@ include('check_login.php');
                 <tr>
                     <td>
                         <label for="q_amount">Number of questions:</label>
-                        <input type="number" onclick="generateQuizCards()" name="qNumber" value="1" id="q_amount" min="1" max="10">
+                        <input type="number" onclick="generateQuizCards()" name="qNumber" value="2" id="q_amount" min="1" max="10">
                     </td>
                 </tr>
                 <tr>
