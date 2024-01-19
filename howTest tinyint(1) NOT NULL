@@ -1,0 +1,23 @@
+* [33mcommit fc9d19de25fcfb762466676a739732efe2de6614[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+[31m|[m Author: arvidwg <arvidwg@varmdogymnasium.se>
+[31m|[m Date:   Thu Jan 18 23:10:12 2024 +0100
+[31m|[m 
+[31m|[m     inte klar än
+[31m|[m 
+* [33mcommit f541869bf02c564dd7c6c080c8d3d0797082d7d2[m[33m ([m[1;32mwebsettings[m[33m, [m[1;32mdeletePost[m[33m)[m
+[31m|[m Author: arvidwg <arvidwg@varmdogymnasium.se>
+[31m|[m Date:   Thu Jan 18 18:40:28 2024 +0100
+[31m|[m 
+[31m|[m     Ta bort poster, om det är en 'parent' så tas child post också bort
+[31m|[m 
+* [33mcommit edc545e0cae065eb37850c0a6f7a8bf8d4d0ad87[m[33m ([m[1;32muser_table_bugfix[m[33m)[m
+[31m|[m Author: arvidwg <arvidwg@varmdogymnasium.se>
+[31m|[m Date:   Thu Jan 18 17:52:15 2024 +0100
+[31m|[m 
+[31m|[m     bugfix
+[31m|[m 
+* [33mcommit f19ee6db2f08e1757141a106d0c14b685008c10f[m
+  Author: arvidwg <arvidwg@varmdogymnasium.se>
+  Date:   Thu Jan 18 09:48:38 2024 +0100
+  
+      Första commiten
