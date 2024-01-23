@@ -18,7 +18,7 @@ $numberOne = 0;
     <div class="row align-items-center rounded-top-3 bg-primary text-light text-center">
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
-        <div class="col-7">
+        <div class="col-7 m-auto">
             Top 10 (total score)
         </div>
         <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 h3 topTenBtn">
@@ -40,7 +40,7 @@ $numberOne = 0;
     $counter = 0;
     foreach ($users as $user) {
         if ($counter % 2 == 0) {
-            echo "<div class='row bg-secondary-subtle text-center border border-top-0'>";
+            echo "<div class='row bg-secondary-subtle align-items-center text-center border border-top-0'>";
         } else {
             echo "<div class='row text-center border border-top-0'>";
         }
@@ -81,7 +81,7 @@ $numberOne = 0;
     <div class="row rounded-top-3 bg-primary text-light text-center">
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
-        <div class="col-7">
+        <div class="col-7 m-auto">
          Top 10 (Genomsmittspoäng)
         </div>
         <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 h3 topTenBtn">
@@ -103,7 +103,7 @@ $numberOne = 0;
     foreach ($users as $user) {
         // every other row should have a different background color
         if ($counter % 2 == 0) {
-            echo "<div class='row text-center border border-top-0'>";
+            echo "<div class='row bg-secondary-subtle align-items-center text-center border border-top-0'>";
         } else {
             echo "<div class='row text-center border border-top-0'>";
         }
@@ -142,7 +142,7 @@ $numberOne = 0;
     <div class="row rounded-top-3 bg-primary text-light text-center">
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
-        <div class="col-7">
+        <div class="col-7 m-auto">
          Top 10 (Snabbast per fråga)
         </div>
         <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 rounded- h3 topTenBtn">
@@ -164,7 +164,7 @@ $numberOne = 0;
     $counter = 0;
     foreach ($users as $user) {
         if ($counter % 2 == 0) {
-            echo "<div class='row bg-secondary-subtle text-center border border-top-0'>";
+            echo "<div class='row bg-secondary-subtle align-items-center text-center border border-top-0'>";
         } else {
             echo "<div class='row text-center border border-top-0'>";
         }
@@ -186,4 +186,4 @@ $numberOne = 0;
     ?>
 </div>
 
-<script src="toptenJS.js?"></script>
+<script src="toptenJS.js"></script>
