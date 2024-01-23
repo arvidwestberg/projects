@@ -186,4 +186,4 @@ $numberOne = 0;
     ?>
 </div>
 
-<script src="toptenJS.js"></script>
+<script src="toptenJS.js?"></script>
