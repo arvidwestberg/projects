@@ -179,4 +179,4 @@ foreach ($users as $user) {
 
 </table>
 
-<script src="toptenJS.js"></script>
+<script src="toptenJS.js?"></script>
