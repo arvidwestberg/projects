@@ -6,10 +6,14 @@ if (isset($_SESSION['theme'])) {
     $theme = $_SESSION['theme'];
 
     echo "<script> document.documentElement.setAttribute('data-bs-theme', '$theme');</script>";
+}else{
+    $theme = "light";
+    echo "<script> document.documentElement.setAttribute('data-bs-theme', '$theme');</script>";
+
 }
 
 ?>
-<nav class="navbar navbar-expand-sm fixed-top border-bottom">
+<nav class="navbar navbar-expand-sm bg-body-tertiary fixed-top border-bottom">
     <div class="container-fluid m-1">
         <a class="navbar-brand" href="index.php"> <span class="display-6">Quizsidan</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -35,22 +39,23 @@ if (isset($_SESSION['theme'])) {
                                 <span class="visually-hidden">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="login.php">Byt konto</a></li><br>
+                                <li><a class="dropdown-item" href="login.php">Byt konto</a></li>
                                 <li><a class="dropdown-item" href="register.php">Registrera nytt konto</a></li>
                                 <hr class="dropdown-divider">
                                 <li><a class="dropdown-item" href="logout.php">Logga ut</a></li>
                             </ul>
                         </div>
                     </li>
-                    <ul class="nav-item d-block d-sm-none">
-                        <li><a class="nav-item" href="login.php">Byt konto</a></li>
-                        <li><a class="nav-item" href="register.php">Registrera nytt konto</a></li>
+
+                    <div class="nav-item d-block my-2 d-sm-none">
+                        <li class="nav-item"><a class="nav-link" href="login.php">Byt konto</a></li><br>
+                        <li class="nav-item"><a class="nav-link" href="register.php">Registrera nytt konto</a></li>
                         <hr class="nav-divider">
-                        <li><a class="nav-item" href="logout.php">Logga ut</a></li>
-                    </ul>
-                    <li class="nav-item m-0 mt-1 ms-2" id="themeIcon">
-                        <i class="bi bi-brightness-high align-bottom h4" onclick="changeTheme('<?php echo $theme; ?>')"></i>
-                    </li>
+                        <li class="nav-item"><a class="nav-link text-danger" href="logout.php">Logga ut</a></li>
+                    </div>
+                    <div class="position-fixed bottom-0 end-0 mb-2 me-3" onclick="changeTheme('<?php echo $theme; ?>')">
+                        <button class=" btn btn-primary py-2 px-3"><span class="bi bi-brightness-high m-0 h4"></span></button>
+                    </div>
                 </ul>
             </div>
         </div>

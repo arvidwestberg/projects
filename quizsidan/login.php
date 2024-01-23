@@ -69,12 +69,12 @@ include('dbconnection.php');
                             <label for="floatingPassword">Lösenord</label>
                         </div>
 
-                        <div class="">
-
-                            <p><a class="link-opacity-75-hover" href="register.php">Registrera ett konto</a></p>
-                        </div>
                         <button class="btn btn-primary w-100 py-2" type="submit">Logga in</button>
                     </form>
+                    <div class="mt-1">
+    
+                        <p class="small">Har du inget konto? <a class="link-opacity-75-hover" href="register.php">Skapa ett konto här</a></p>
+                    </div>
                 </div>
                 <div class="col-sm-7">
                     <h1 class="h3 mb-3 fw-normal d-none d-sm-block" style="visibility: hidden;">Logga in</h1>
