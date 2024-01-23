@@ -19,55 +19,66 @@ include('check_login.php');
 
 <body>
     <?php
-    include('header.php');
+    include("header.php");
     ?>
-    <br>
-    <table class="align-top">
-        <tr>
-            <td class="halfScreen">
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
                 <p class="lead">Välkommen tillbaka <?php echo $_SESSION['name']; ?>!</p>
-                <h1 style="margin-top: 0;">Alla Quizer</h1>
-                <hr><br>
-                <form action="quiz.php" method="get">
-                    <div class="display-ib">
-                        <div id="newQuiz" onclick="window.location.href='create_quiz.php'">
-                            <span class="plus"> + </span>
+                <h1>Alla Quizer</h1>
+                <hr>
+
+                <div class="container">
+                    <div class="col-1 p-2">
+
+                        <div class="display-ib">
+                            <div id="newQuiz" onclick="window.location.href='create_quiz.php'">
+                                <span class="plus"> + </span>
+                            </div>
                         </div>
                     </div>
-                    <?php
-                    $sql = "SELECT * FROM quiz";
-                    // count rows
-                    $result = $dbconn->query($sql);
-                    $count = 0;
-                    $rows = $result->fetchAll(PDO::FETCH_ASSOC);
-                    $rows_nr = count($rows);
-                    $sql = "SELECT * FROM websettings";
-                    $stmt = $dbconn->prepare($sql);
-                    $stmt->execute();
-                    $websettings = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                    for ($i = 0; $i < $rows_nr; $i++) {
-                        echo "<button class='quizCard' type='submit' name='quiz' value='" . $rows[$i]['id'] . "'>";
-                        echo "<h2>" . $rows[$i]['name'] . "</h2>";
-                        if ($websettings['showCreatorName'] == 1) {
-                            echo "<p style='font-size:13px;'>Skapad av: " . $rows[$i]['creator'] . "</p>";
-                        }
-                        echo "</button>";
-                    }
-                    ?>
+                    <form action="quiz.php" method="get">
+                        <div class="row">
+                            <?php
+                            $sql = "SELECT * FROM quiz";
+                            // count rows
+                            $result = $dbconn->query($sql);
+                            $count = 0;
+                            $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+                            $rows_nr = count($rows);
+                            $sql = "SELECT * FROM websettings";
+                            $stmt = $dbconn->prepare($sql);
+                            $stmt->execute();
+                            $websettings = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                    <input type="hidden" name="whatQ" value="1">
-                </form>
-            </td>
-            <td class="halfScreen">
-                <div>
-                    <?php
-                    include('topTen.php');
-                    ?>
+                            for ($i = 0; $i < $rows_nr; $i++) {
+                                echo "<div class='col p-2'>";
+                                echo "<div class='card m-0' type='submit' name='quiz' value='" . $rows[$i]['id'] . "'>";
+                                // echo "<img src='#' class='card-img-top' alt='#'>";
+                                echo "<div class='card-body'>";
+                                echo "<h5 class='card-title'>" . $rows[$i]['name'] . "</h5>";
+                                if ($websettings['showCreatorName'] == 1) {
+                                    echo "<p class='card-text'>Skapad av: " . $rows[$i]['creator'] . "</p>";
+                                }
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                            }
+                            ?>
+                            <input type="hidden" name="whatQ" value="1">
+                    </form>
                 </div>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+        <div class="col">
+            <div>
+                <?php
+                include('topTen.php');
+                ?>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

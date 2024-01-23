@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Check if the theme is already set in the session
 if (isset($_SESSION['theme'])) {
@@ -39,10 +41,10 @@ if (isset($_SESSION['theme'])) {
                                 <span class="visually-hidden">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="login.php">Byt konto</a></li>
-                                <li><a class="dropdown-item" href="register.php">Registrera nytt konto</a></li>
+                                <li class="w-100"><a class="dropdown-item" href="login.php">Byt konto</a></li>
+                                <li class="w-100"><a class="dropdown-item" href="register.php">Registrera nytt konto</a></li>
                                 <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="logout.php">Logga ut</a></li>
+                                <li class="w-100"><a class="dropdown-item" href="logout.php">Logga ut</a></li>
                             </ul>
                         </div>
                     </li>
@@ -62,6 +64,7 @@ if (isset($_SESSION['theme'])) {
     </div>
     </div>
 </nav>
+<br>
 <br>
 <br>
 <br>
