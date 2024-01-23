@@ -25,18 +25,22 @@ include('check_login.php');
         <div class="row">
             <div class="col-7">
                 <p class="lead">Välkommen tillbaka <?php echo $_SESSION['name']; ?>!</p>
-                <h1>Alla Quizer</h1>
+                <div class="row">
+
+                    <div class="col-8">
+                        <h1>Alla Quizer</h1>
+                    </div>
+                    <div class="col m-auto">
+                        <a href="create_quiz.php">
+                            <button type="button" class="btn btn-primary m-0">
+                                Gör en quiz
+                            </button>
+                        </a>
+                    </div>
+                </div>
                 <hr>
 
                 <div class="container">
-                    <div class="col-1 p-2">
-
-                        <div class="display-ib">
-                            <div id="newQuiz" onclick="window.location.href='create_quiz.php'">
-                                <span class="plus"> + </span>
-                            </div>
-                        </div>
-                    </div>
 
                     <form action="quiz.php" method="get">
                         <div class="row">
@@ -54,15 +58,17 @@ include('check_login.php');
 
                             for ($i = 0; $i < $rows_nr; $i++) {
                                 echo "<div class='col p-2'>";
-                                echo "<div class='card m-0' type='submit' name='quiz' value='" . $rows[$i]['id'] . "'>";
+                                echo "<button class='card p-3 w-100 bg-body-tertiary' type='submit' name='quiz' value='" . $rows[$i]['id'] . "'>";
                                 // echo "<img src='#' class='card-img-top' alt='#'>";
-                                echo "<div class='card-body'>";
-                                echo "<h5 class='card-title'>" . $rows[$i]['name'] . "</h5>";
+                                // echo "<div style='width: 100%; height: 100px; background-color: #000000;'></div>";
+                                // echo "<hr>";
+                                echo "<div class='card-body m-auto'>";
+                                echo "<h4 class='card-title'>" . $rows[$i]['name'] . "</h4>";
                                 if ($websettings['showCreatorName'] == 1) {
-                                    echo "<p class='card-text'>Skapad av: " . $rows[$i]['creator'] . "</p>";
+                                    echo "<p class='card-text small text-body-secondary'>Skapad av: " . $rows[$i]['creator'] . "</p>";
                                 }
                                 echo "</div>";
-                                echo "</div>";
+                                echo "</button>";
                                 echo "</div>";
                             }
                             ?>

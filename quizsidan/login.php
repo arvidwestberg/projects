@@ -18,7 +18,7 @@ include('dbconnection.php');
     <script src="index.js"></script>
 </head>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
+<body class="d-flex align-items-center py-4">
     <?php
     include('header.php');
 
