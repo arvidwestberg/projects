@@ -62,11 +62,11 @@ include('dbconnection.php');
                         <h1 class="h3 mb-3 fw-normal">Logga in</h1>
 
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="Användarnamn">
+                            <input type="email" class="form-control" name="username" id="floatingInput" required placeholder="Användarnamn">
                             <label for="floatingInput">Användarnamn</label>
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Lösenord">
+                            <input type="password" class="form-control" name="password" id="floatingPassword" required placeholder="Lösenord">
                             <label for="floatingPassword">Lösenord</label>
                         </div>
 

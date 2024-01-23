@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Check if the theme is already set in the session
+if (isset($_SESSION['theme'])) {
+    $theme = $_SESSION['theme'];
+    
+    echo "<script> document.documentElement.setAttribute('data-bs-theme', '$theme');</script>";
+} 
+
+?>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid m-1">
         <a class="navbar-brand" href="index.php"> <span class="display-6">Quizsidan</span></a>
@@ -27,7 +38,11 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item"><button class="btn bg-light-subtle mb-auto" onclick="change_theme()">Dark/Light</button></li>
+                <li class="nav-item">
+                <button class="btn bg-light-subtle mb-auto" onclick="changeTheme('<?php echo $theme; ?>')">Dark/Light</button>
+
+                    <!-- <button class="btn bg-light-subtle mb-auto" onclick="change_theme()">Dark/Light</button> -->
+                </li>
                 </li>
             </ul>
         </div>
