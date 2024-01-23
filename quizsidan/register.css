@@ -1,0 +1,8 @@
+.form-signin input[type="name"] {
+    margin-bottom: -1px;
+    border-radius: 0;
+  }
+  
+  #registerContainer{
+    max-width: 450px !important;
+  }
