@@ -18,5 +18,5 @@ function updateTable() {
     }
     );
 
-    arr[value % (arr.length)].style.display = "table";
+    arr[value % (arr.length)].style.display = true;
 }

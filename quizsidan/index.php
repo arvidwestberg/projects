@@ -21,6 +21,7 @@ include('check_login.php');
     <table class="align-top">
         <tr>
             <td class="halfScreen">
+                <p class="lead">Välkommen tillbaka <?php $_SESSION['name'];?>!</p>
                 <h1 style="margin-top: 0;">Alla Quizer</h1>
                 <hr><br>
                 <form action="quiz.php" method="get">

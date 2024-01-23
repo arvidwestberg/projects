@@ -3,21 +3,24 @@ $dontShowConnectionMsg = true;
 include('dbconnection.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html  data-bs-theme="dark" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logga in</title>
-    <link rel="stylesheet" href="style.css?">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css?">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </head>
 
 <body>
     <?php
     include('header.php');
-    echo "<a href='../index.php'><-- Tillbaka</a>";
 
-    echo "<table class='align-top'><tr><td class='halfScreen'>";
     try {
 
         if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -49,24 +52,42 @@ include('dbconnection.php');
         echo $sql . "<br />" . $e->getMessage();
     }
     ?>
-    <div class="userInput inputLarge w50">
-        <form method="post" action="">
-            <input type="text" name="username" placeholder="Användarnamn" required><br>
-            <input type="password" name="password" placeholder="Lösenord" required><br>
-            <button class="btn blue-btn" type="submit">Logga in </button>
-        </form>
-        <div class="mb-20">
-<!--             <a style="font-size: 14px; text-decoration: none; font-weight:lighter;" href="forgotten_password.php">Glömt lösenord?</a>
- -->        </div>
-        <hr class="mb-20">
-        <button class="btn green-btn w-fit" onclick="window.location.href='register.php'">Registrera nytt konto</button>
-    </div>
-    <?php
-    echo "</td><td class='halfScreen'>";
-    include('topTen.php');
-    echo "</td></tr></table>";
+    <main class="form-signin w-100 m-auto">
 
-    ?>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col">
+
+                    <form>
+                        <h1 class="h3 mb-3 fw-normal">Logga in</h1>
+
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="Användarnamn">
+                            <label for="floatingInput">Användarnamn</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Lösenord">
+                            <label for="floatingPassword">Lösenord</label>
+                        </div>
+
+                        <div class="">
+
+                            <p><a class="link-opacity-75-hover" href="register.php">Registrera ett konto</a></p>
+                        </div>
+                        <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+                    </form>
+                </div>
+                <div class="col">
+                    <h1 class="h3 mb-3 fw-normal" style="visibility: hidden;">Logga in</h1>
+                    <?php
+                    
+                    include('topTen.php')
+                    ?>
+
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
