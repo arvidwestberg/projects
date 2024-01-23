@@ -15,13 +15,13 @@ $numberOne = 0;
 ?>
 
 <div class="container" id="totalScore">
-    <div class="row rounded-top-3 bg-primary text-light text-center">
+    <div class="row align-items-center rounded-top-3 bg-primary text-light text-center">
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
-        <div class="border-start border-end border-light m-auto col-7">
-            <span class="h6"> Top 10 (total score)</span>
+        <div class="col-7">
+            Top 10 (total score)
         </div>
-        <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 rounded- h3 topTenBtn">
+        <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 h3 topTenBtn">
             &#x1F892;
         </div>
     </div>
@@ -81,10 +81,10 @@ $numberOne = 0;
     <div class="row rounded-top-3 bg-primary text-light text-center">
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
-        <div class="border-start border-end border-light m-auto col-7">
-            <span class="h6"> Top 10 (Genomsmittspoäng)</span>
+        <div class="col-7">
+         Top 10 (Genomsmittspoäng)
         </div>
-        <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 rounded- h3 topTenBtn">
+        <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 h3 topTenBtn">
             &#x1F892;
         </div>
     </div>
@@ -142,8 +142,8 @@ $numberOne = 0;
     <div class="row rounded-top-3 bg-primary text-light text-center">
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
-        <div class="border-start border-end border-light m-auto col-7">
-            <span class="h6"> Top 10 (Snabbast per fråga)</span>
+        <div class="col-7">
+         Top 10 (Snabbast per fråga)
         </div>
         <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 rounded- h3 topTenBtn">
             &#x1F892;
@@ -178,7 +178,7 @@ $numberOne = 0;
             $numberOne++;
         }
         echo "</div>";
-        echo "<div class='col py-2' id='userScore'>" . round($user['avrage_time'], 2) . " seconds</div>";
+        echo "<div class='col py-2' id='userScore'>" . round($user['avrage_time'], 2) . " s</div>";
         echo "</div>";
         $counter++;
     }
