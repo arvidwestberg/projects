@@ -18,7 +18,7 @@ include('dbconnection.php');
     <script src="index.js"></script>
 </head>
 
-<body class="d-flex align-items-center py-4">
+<body class="d-flex align-items-center py-5">
     <?php
     include('header.php');
 
@@ -52,12 +52,14 @@ include('dbconnection.php');
         echo $sql . "<br />" . $e->getMessage();
     }
     ?>
-    <main class="form-signin w-100 m-auto">
+    <main class="form-signin w-100 m-auto mt-5">
 
         <div class="container">
             <div class="row g-5">
-                <div class="col-sm">
+                <div class="col-sm m-auto">
                     <form method="POST" action="">
+                        <br>
+
                         <h1 class="h3 mb-3 fw-normal">Logga in</h1>
 
                         <div class="form-floating">
@@ -68,16 +70,14 @@ include('dbconnection.php');
                             <input type="password" class="form-control" name="password" id="floatingPassword" required placeholder="Lösenord">
                             <label for="floatingPassword">Lösenord</label>
                         </div>
-
                         <button class="btn btn-primary w-100 py-2" type="submit">Logga in</button>
                     </form>
                     <div class="mt-1">
-    
+
                         <p class="small">Har du inget konto? <a class="link-opacity-75-hover" href="register.php">Skapa ett konto här</a></p>
                     </div>
                 </div>
                 <div class="col-sm-7">
-                    <h1 class="h3 mb-3 fw-normal d-none d-sm-block" style="visibility: hidden;">Logga in</h1>
                     <?php
 
                     include('topTen.php')
