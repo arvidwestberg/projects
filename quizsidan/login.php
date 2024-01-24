@@ -80,7 +80,7 @@ include('dbconnection.php');
                 <div class="col-sm-7">
                     <?php
 
-                    include('topTen.php')
+                    include('topList.php')
                     ?>
 
                 </div>

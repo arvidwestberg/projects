@@ -81,7 +81,7 @@ include('check_login.php');
         </div>
         <div class="col m-auto">
             <?php
-            include('topTen.php');
+            include('topList.php');
             ?>
         </div>
     </div>
