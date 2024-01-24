@@ -28,7 +28,7 @@ if (isset($_SESSION['theme'])) {
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Hem</a>
+                        <a class="nav-link active" aria-current="page" href="index.php"><i class="bi bi-house"></i> Hem</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="create_quiz.php">Gör en quiz</a>
