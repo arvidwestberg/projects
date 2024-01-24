@@ -58,8 +58,7 @@ include('check_login.php');
 
                             for ($i = 0; $i < $rows_nr; $i++) {
                                 echo "<div class='col p-2'>";
-                                echo "<button class='card border-0 p-3 w-100 bg-secondary bg-opacity-25' type='submit' name='quiz' value='" . $rows[$i]['id'] . "'>";
-                                // echo "<img src='#' class='card-img-top' alt='#'>";
+                                echo "<button class='card p-5 w-100 h-100 bg-body-tertiary' type='submit' name='quiz' value='" . $rows[$i]['id'] . "'>";                                // echo "<img src='#' class='card-img-top' alt='#'>";
                                 // echo "<div style='width: 100%; height: 100px; background-color: #000000;'></div>";
                                 // echo "<hr>";
                                 echo "<div class='m-auto'>";
@@ -68,7 +67,7 @@ include('check_login.php');
                                 if ($websettings['showCreatorName'] == 1) {
                                     echo "<div class='small text-body-secondary'>Skapad av: " . $rows[$i]['creator'] . "</div>";
                                 }
-                                echo "</div>";
+                                echo "</button>";
                                 echo "</div>";
                             }
                             ?>
