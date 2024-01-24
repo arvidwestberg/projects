@@ -41,6 +41,13 @@ if (isset($_SESSION['theme'])) {
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end ">
                             <li class="w-100 dropdown-item"><a class="nav-link" href="profile.php"><i class="bi bi-person"></i> Profil</a></li>
+                            <?php
+                            if ($_SESSION['admin'] == 1) {
+                            ?>
+                                <li class="w-100 dropdown-item"><a class="nav-link" href="view_tables.php"><i class=""></i> Tabeller</a></li>
+                            <?php
+                            }
+                            ?>
                             <li class="w-100 dropdown-item"><a class="nav-link" href="login.php">Byt konto</a></li>
                             <li class="w-100 dropdown-item"><a class="nav-link" href="register.php">Registrera nytt konto</a></li>
                             <hr class="dropdown-divider">
