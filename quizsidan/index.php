@@ -23,7 +23,7 @@ include('check_login.php');
     ?>
     <div class="container">
         <div class="row">
-            <div class="col-7">
+            <div class="col-sm-7">
                 <p class="lead">Välkommen tillbaka <?php echo $_SESSION['name']; ?>!</p>
                 <div class="row">
 
