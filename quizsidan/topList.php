@@ -19,7 +19,7 @@ $numberOne = 0;
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
         <div class="col-7 m-auto">
-            Top 5 (total score)
+            Top 5 (totala poäng)
         </div>
         <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 h3 topTenBtn">
             &#x1F892;
