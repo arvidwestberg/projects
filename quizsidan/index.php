@@ -58,17 +58,17 @@ include('check_login.php');
 
                             for ($i = 0; $i < $rows_nr; $i++) {
                                 echo "<div class='col p-2'>";
-                                echo "<button class='card p-3 w-100 bg-body-tertiary' type='submit' name='quiz' value='" . $rows[$i]['id'] . "'>";
+                                echo "<div class='card p-5 w-100 h-100 bg-body-tertiary' type='submit' name='quiz' value='" . $rows[$i]['id'] . "'>";
                                 // echo "<img src='#' class='card-img-top' alt='#'>";
                                 // echo "<div style='width: 100%; height: 100px; background-color: #000000;'></div>";
                                 // echo "<hr>";
-                                echo "<div class='card-body m-auto'>";
-                                echo "<h4 class='card-title'>" . $rows[$i]['name'] . "</h4>";
+                                echo "<div class='m-auto'>";
+                                echo "<h4 class='card-title mb-0'>" . $rows[$i]['name'] . "</h4>";
+                                echo "</div>";
                                 if ($websettings['showCreatorName'] == 1) {
-                                    echo "<p class='card-text small text-body-secondary'>Skapad av: " . $rows[$i]['creator'] . "</p>";
+                                    echo "<div class='small text-body-secondary'>Skapad av: " . $rows[$i]['creator'] . "</div>";
                                 }
                                 echo "</div>";
-                                echo "</button>";
                                 echo "</div>";
                             }
                             ?>
