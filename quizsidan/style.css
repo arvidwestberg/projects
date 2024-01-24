@@ -600,16 +600,8 @@ nav ul li a {
 }
 
 /* result */
-.correct {
-  background-color: #00ff08;
-}
-
-.wrong {
-  background-color: #ff0000b2;
-}
-
 #resultTable {
-  max-width: 350px;
+  max-width: 500px;
 }
 
 /* index */

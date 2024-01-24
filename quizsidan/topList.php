@@ -38,11 +38,16 @@ $numberOne = 0;
     <?php
 
     $counter = 0;
+    $rows = count($users);
     foreach ($users as $user) {
+        echo "<div id='row" . $counter . "' class='row text-center align-items-center border border-top-0'>";
         if ($counter % 2 == 0) {
-            echo "<div class='row bg-secondary-subtle align-items-center text-center border border-top-0'>";
-        } else {
-            echo "<div class='row text-center border border-top-0'>";
+            // add bg color to the row
+            echo "<script>document.getElementById('row" . $counter . "').classList.add('bg-secondary-subtle');</script>";
+        }
+        if ($counter == $rows - 1) {
+            // add border radius to the last row
+            echo "<script>document.getElementById('row" . $counter . "').classList.add('rounded-bottom-3');</script>";
         }
         echo "<div class='col py-2'>";
         echo $user['username'];
@@ -82,7 +87,7 @@ $numberOne = 0;
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
         <div class="col-7 m-auto">
-         Top 5 (Genomsmittspoäng)
+            Top 5 (Genomsmittspoäng)
         </div>
         <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 h3 topTenBtn">
             &#x1F892;
@@ -143,7 +148,7 @@ $numberOne = 0;
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
         <div class="col-7 m-auto">
-         Top 5 (Snabbast per fråga)
+            Top 5 (Snabbast per fråga)
         </div>
         <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 rounded- h3 topTenBtn">
             &#x1F892;
