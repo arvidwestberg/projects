@@ -7,7 +7,7 @@ $sql = "SELECT users.username, SUM(history.score) AS total_score FROM users
     INNER JOIN history ON users.id = history.user_id
     GROUP BY users.username
     ORDER BY total_score DESC
-    LIMIT 10";
+    LIMIT 5";
 $stmt = $dbconn->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -19,7 +19,7 @@ $numberOne = 0;
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
         <div class="col-7 m-auto">
-            Top 10 (total score)
+            Top 5 (total score)
         </div>
         <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 h3 topTenBtn">
             &#x1F892;
@@ -69,7 +69,7 @@ $sql = "SELECT users.username, SUM(history.score) / SUM(history.q_amount) AS avr
     INNER JOIN history ON users.id = history.user_id
     GROUP BY users.username
     ORDER BY avrage_score DESC
-    LIMIT 10";
+    LIMIT 5";
 $stmt = $dbconn->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -82,7 +82,7 @@ $numberOne = 0;
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
         <div class="col-7 m-auto">
-         Top 10 (Genomsmittspoäng)
+         Top 5 (Genomsmittspoäng)
         </div>
         <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 h3 topTenBtn">
             &#x1F892;
@@ -131,7 +131,7 @@ $sql = "SELECT users.username, SUM(history.time) / SUM(history.q_amount) AS avra
     INNER JOIN history ON users.id = history.user_id
     GROUP BY users.username
     ORDER BY avrage_time ASC
-    LIMIT 10";
+    LIMIT 5";
 $stmt = $dbconn->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -143,7 +143,7 @@ $numberOne = 0;
         <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
             &#x1F890; </div>
         <div class="col-7 m-auto">
-         Top 10 (Snabbast per fråga)
+         Top 5 (Snabbast per fråga)
         </div>
         <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 rounded- h3 topTenBtn">
             &#x1F892;
