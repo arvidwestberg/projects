@@ -79,12 +79,10 @@ include('check_login.php');
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div>
-                <?php
-                include('topTen.php');
-                ?>
-            </div>
+        <div class="col m-auto">
+            <?php
+            include('topTen.php');
+            ?>
         </div>
     </div>
 </body>
