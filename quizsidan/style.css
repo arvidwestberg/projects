@@ -611,3 +611,8 @@ nav ul li a {
 #resultTable {
   max-width: 350px;
 }
+
+/* index */
+#makeQuizBtn{
+  max-width: 170px;
+}
