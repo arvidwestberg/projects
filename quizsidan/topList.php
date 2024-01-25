@@ -16,13 +16,14 @@ $numberOne = 0;
 
 <div class="container" id="totalScore">
     <div class="row align-items-center rounded-top-3 bg-primary text-light text-center">
-        <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
-            &#x1F890; </div>
+        <div onclick="minus()" class="col m-auto py-3 rounded-top-3 rounded-end-0 h6 topTenBtn">
+            <i class="bi bi-caret-left-fill"></i>
+        </div>
         <div class="col-7 m-auto">
             Top 5 (totala poäng)
         </div>
-        <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 h3 topTenBtn">
-            &#x1F892;
+        <div onclick="plus()" class="col m-auto py-3 rounded-top-3 rounded-start-0 h6 topTenBtn">
+            <i class="bi bi-caret-right-fill"></i>
         </div>
     </div>
     <!-- new row -->
@@ -52,7 +53,7 @@ $numberOne = 0;
         echo "<div class='col py-2'>";
         echo $user['username'];
         if (isset($_SESSION['username']) && $user['username'] == $_SESSION['username']) {
-            echo " (you)";
+            echo " (Du)";
         }
         if ($numberOne == 0) {
             echo "&#128081;";
@@ -84,13 +85,13 @@ $numberOne = 0;
 
 <div class="container" style="display: none;" id="avrageScore">
     <div class="row rounded-top-3 bg-primary text-light text-center">
-        <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
-            &#x1F890; </div>
+        <div onclick="minus()" class="col m-auto py-3 rounded-top-3 rounded-end-0 h6 topTenBtn">
+            <i class="bi bi-caret-left-fill"></i> </div>
         <div class="col-7 m-auto">
             Top 5 (Genomsmittspoäng)
         </div>
-        <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 h3 topTenBtn">
-            &#x1F892;
+        <div onclick="plus()" class="col m-auto py-3 rounded-top-3 rounded-start-0 h6 topTenBtn">
+            <i class="bi bi-caret-right-fill"></i>
         </div>
     </div>
     <!-- new row -->
@@ -145,13 +146,13 @@ $numberOne = 0;
 
 <div class="container" style="display: none;" id="fastestTime">
     <div class="row rounded-top-3 bg-primary text-light text-center">
-        <div onclick="minus()" class="col m-auto py-2 rounded-top-3 rounded-end-0 h3 topTenBtn">
-            &#x1F890; </div>
+        <div onclick="minus()" class="col m-auto py-3 rounded-top-3 rounded-end-0 h6 topTenBtn">
+            <i class="bi bi-caret-left-fill"></i> </div>
         <div class="col-7 m-auto">
             Top 5 (Snabbast per fråga)
         </div>
-        <div onclick="plus()" class="col m-auto py-2 rounded-top-3 rounded-start-0 rounded- h3 topTenBtn">
-            &#x1F892;
+        <div onclick="plus()" class="col m-auto py-3 rounded-top-3 rounded-start-0 h6 topTenBtn">
+            <i class="bi bi-caret-right-fill"></i>
         </div>
     </div>
     <!-- new row -->
