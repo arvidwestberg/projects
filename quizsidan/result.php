@@ -95,14 +95,14 @@ include('check_login.php');
     $counter = 0;
     $rows = count($questions);
     foreach ($questions as $index => $question) {
-        echo "<div id='row".$counter."' class='row text-center align-items-center border border-top-0'>";
+        echo "<div id='row" . $counter . "' class='row text-center align-items-center border border-top-0'>";
         if ($counter % 2 == 0) {
             // add bg color to the row
-            echo "<script>document.getElementById('row".$counter."').classList.add('bg-secondary-subtle');</script>";
-        } 
+            echo "<script>document.getElementById('row" . $counter . "').classList.add('bg-secondary-subtle');</script>";
+        }
         if ($counter == $rows - 1) {
             // add border radius to the last row
-            echo "<script>document.getElementById('row".$counter."').classList.add('rounded-bottom-3');</script>";
+            echo "<script>document.getElementById('row" . $counter . "').classList.add('rounded-bottom-3');</script>";
         }
         echo "<div class='col'>" . $question['question'] . "</div>";
 
@@ -110,8 +110,13 @@ include('check_login.php');
         echo "<div class='col p-0'>";
         echo "<ul class='m-2'>";
         for ($i = 1; $i <= 3; $i++) {
-            if ($question['correct'] === $i) {
-                echo "<li class='bg-success rounded-2'>" . $question['answer' . $i] . "</li>";
+            if ($question['correct'] == $i) {
+                if ($_SESSION['answer' . ($index + 1)] == $i) {
+                    echo "<li class='bg-success rounded-2'>" . $question['answer' . $i] . "</li>";
+                } else {
+                    echo "<li class='bg-success-subtle rounded-2'>" . $question['answer' . $i] . "</li>";
+                }
+                // echo "<li class='bg-success rounded-2'>" . $question['answer' . $i] . "</li>";
             } elseif ($_SESSION['answer' . ($index + 1)] == $i) {
                 echo "<li class='bg-danger rounded-2'>" . $question['answer' . $i] . "</li>";
             } else {
@@ -125,7 +130,7 @@ include('check_login.php');
     }
     echo "</div>";
     echo "<div style='width:fit-content; margin: auto;'>Du fick $correct / $Qamount rätt</div>";
-
+    echo "<script>console.log('" . $_SESSION['quizTime'] . "');</script>";
     // Insert into history
     if (isset($_SESSION['quizFinished']) && $_SESSION['quizFinished']) {
 

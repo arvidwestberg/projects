@@ -17,10 +17,9 @@ include('check_login.php');
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="index.js"></script>
 
-<body>
+<body class="px-3">
     <?php
     include("header.php");
-    // include('header.php');
     if (isset($_GET['answer'])) {
         $answer = $_GET['answer'];
         $_SESSION["answer" . $_GET['prevQ']] = $answer;
@@ -28,7 +27,7 @@ include('check_login.php');
     if (isset($_GET['finish'])) {
         $_SESSION["quiz"] = $_GET['quiz'];
         $_SESSION["quizFinished"] = true;
-        $_SESSION["quizTime"] = time() - $_COOKIE['quizTime'];
+        $_SESSION["quizTime"] = time() - $_SESSION['quizTime'];
         // header("Location: result.php");
         echo "<script>window.location.href = 'result.php';</script>";
     } elseif (!isset($_GET['whatQ'])) {
@@ -48,7 +47,7 @@ include('check_login.php');
         $stmt = $dbconn->prepare($sql);
         $stmt->execute();
         $name = $stmt->fetch(PDO::FETCH_ASSOC);
-        echo "<div class='card border-0 p-5 bg-body-tertiary'>";
+        echo "<div class='m-auto mt-4 col-md-5 col-lg-4 col-sm-6 rounded-5 shadow-sm text-center border-0 p-5 bg-body-tertiary'>";
         echo "<h1>" . $name['name'] . "</h1>";
 
         // get questions and answers
@@ -78,10 +77,10 @@ include('check_login.php');
         if ($whatQ > 0 && $whatQ < $Qamount) {
             // prev btn
             // next btn
-            echo "<button class='btn btn-primary' type='submit' name='whatQ' value=" . ($whatQ + 1) . "> Nästa </button>";
+            echo "<button class='btn btn-lg btn-primary' type='submit' name='whatQ' value=" . ($whatQ + 1) . "> Nästa </button>";
         } elseif ($whatQ >= $Qamount) {
             // finish btn
-            echo "<button class='btn btn-success' type='submit' name='finish'> Klar </button>";
+            echo "<button class='btn btn-lg btn-success' type='submit' name='finish'> Klar </button>";
         }
         echo "<input type='hidden' name='quiz' value='" . $q_nr . "'>";
         echo "<input type='hidden' name='prevQ' value='" . $whatQ . "'>";
