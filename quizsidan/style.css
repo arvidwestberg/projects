@@ -231,6 +231,7 @@ hr {
 }
 
 /* creating quiz */
+
 #createQuizInfo table,
 #createQuizInfo td {
   padding: 2 !important;
@@ -238,11 +239,6 @@ hr {
 
 #createQuizParentTable {
   margin: -13px auto 0 auto;
-}
-
-#quizCardsContainer {
-  width: 18.5%;
-  margin: auto;
 }
 
 #questionContainer::-webkit-scrollbar {
