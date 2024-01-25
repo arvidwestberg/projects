@@ -8,6 +8,7 @@ include('dbconnection.php');
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrera konto</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="login.css">
@@ -108,7 +109,7 @@ VALUES (?, ?, ?, ?, now())";
                             echo "<div class='ms-3'>Account created successfully! <br>";
                             $lastId = $dbconn->lastInsertId();
                             echo "redirecting in 3 seconds...</div>";
-                            // echo "<script>setTimeout(function(){window.location.href = 'index.php';}, 3000);</script>";
+                            echo "<script>setTimeout(function(){window.location.href = 'index.php';}, 3000);</script>";
                         } catch (PDOException $e) {
                             echo $sql . "<br>" . $e->getMessage();
                         }
