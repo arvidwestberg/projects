@@ -17,7 +17,7 @@ include('check_login.php');
     <script src="index.js"></script>
 </head>
 
-<body>
+<body class="py-5 mt-5">
     <?php
     include("header.php");
     ?>

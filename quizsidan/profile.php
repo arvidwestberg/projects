@@ -11,16 +11,22 @@ include('check_login.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+
 </head>
 
-<body>
+<body class="pt-5 mt-5">
     <?php
     include('header.php');
     ?>
     <br>
-    <table class="align-top w100">
-        <tr>
-            <td class="">
+    <div class="container">
+        <div class="row">
+            <div class="col border">
                 <?php
                 // change websettings
                 if (isset($_POST['changeWebsettings'])) {
@@ -54,12 +60,23 @@ include('check_login.php');
                 $stmt->execute();
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                /* vertical table */
-                echo "<table class='profileInfoTable styled-table'>";
-                echo "<thead><tr><td colspan=2>User Info</td></tr></thead>";
-                echo "<tr><th>Username</th><td>" . $user['username'] . "</td></tr>";
-                echo "<tr><th>First name</th><td>" . $user['name'] . "</td></tr>";
-                echo "<tr><th>Latest login</th><td>" . $user['latest_login'] . "</td></tr>";
+                echo "<div class='container'>";
+                echo "<div class='row border-bottom'>
+                                <div class='col bg-primary py-2 text-light rounded-top-3'>Användar info</div>
+                            </div>";
+                echo "<div class='row border border-top-0'>
+                                <div class='col-6 m-auto py-2 bg-body-tertiary'>Användarnamn</div>
+                                <div class='col m-auto'>" . $user['username'] . "</div>
+                            </div>";
+                echo "<div class='row border border-top-0'>
+                                <div class='col-6 m-auto py-2 bg-body-tertiary'>Name</div>
+                                <div class='col m-auto'>" . $user['name'] . "</div>
+                            </div>";
+                echo "<div class='row border border-top-0'>
+                                <div class='col-6 m-auto py-2 bg-body-tertiary'>Senaste inlogg</div>
+                                <div class='col m-auto'>" . $user['latest_login'] . "</div>
+                            </div>";
+                /* Remaining code... */
                 /* avrage time and points per question */
                 $sql = "SELECT * FROM history WHERE user_id = $userID";
                 $stmt = $dbconn->prepare($sql);
@@ -76,11 +93,12 @@ include('check_login.php');
                 if ($totalQ != 0) {
                     $avrageTime = $totalTime / $totalQ;
                     $avragePoints = $points / $totalQ;
-                    echo "<tr><th>Avrage time/question</th><td>" . round($avrageTime, 2) . " seconds</td></tr>";
-                    echo "<tr><th>Points/questions</th><td>" . 100 * round($avragePoints, 2) . "%</td></tr>";
+                    echo "<div class='row border border-top-0'><div class='col-6 m-auto py-2 bg-body-tertiary'>Tid/fråga</div><div class='col m-auto'>" . round($avrageTime, 2) . " seconds</div></div>";
+                    echo "<div class='row border rounded-bottom-3 border-top-0'><div class='col-6 m-auto py-2 bg-body-tertiary'>Poäng/fråga</div><div class='col m-auto'>" . 100 * round($avragePoints, 2) . "%</div></div>";
                 }
 
-                echo "</table><br>";
+                echo "</div>";
+                echo "</div><br>";
                 /* websettings view and change if admin=true as a table */
                 if ($_SESSION['admin'] == 1) {
                     $sql = "SELECT * FROM websettings";
@@ -89,24 +107,24 @@ include('check_login.php');
                     $res = $stmt->fetch(PDO::FETCH_ASSOC);
 
                     /* vertical table */
-                    echo "<table id='websettingsTable' class='styled-table profileInfoTable'>";
-                    echo "<thead><tr><td colspan=2> Websettings</td></tr></thead>";
+                    echo "<div class='container'>";
+                    echo "<div class='row'><div class='col bg-primary text-light py-2 rounded-top-3'> Websettings</div></div>";
                     foreach ($res as $key => $value) {
                         if ($key == "id") continue;
-                        echo "<tr><th>$key</th><td><form method='POST' action=''>";
+                        echo "<div class='row border border-top-0'><div class='col bg-body-tertiary'>$key</div><div class='col'><form method='POST' action=''>";
                         if ($value == 1) {
                             echo '<button id="' . $key . '_on" name="' . $key . '_on" value="' . $key . '_on" class="btn green-btn btn-small" type="submit">On</button>';
                         } else {
                             echo '<button id="' . $key . '_off" name="' . $key . '_off" value="' . $key . '_off" class="btn red-btn btn-small" type="submit">Off</button>';
                         }
                         echo '<input type="hidden" name="changeWebsettings" value="' . 1 . '">';
-                        echo '</form></td></tr>';
+                        echo '</form></div></div>';
                     }
-                    echo "</table><br>";
+                    echo "</div><br>";
                 }
                 ?>
-            </td>
-            <td class="">
+            </div>
+            <div class="col border">
                 <?php
                 // dislay user history
                 $sql = "SELECT * FROM history WHERE user_id = $userID ORDER BY date DESC";
@@ -127,25 +145,23 @@ include('check_login.php');
                 }
                 echo "</table>";
                 ?>
-            </td>
+            </div>
             <!-- change password -->
-            <td class="">
-                <div class="w70 m-auto">
+            <div class="col border">
+                <div class="m-auto">
 
-                    <div class='userInput'>
+                    <div class='bg-body-tertiary rounded-3 shadow-sm p-3'>
                         <form action='' method='post'>
-                            <h2>Change password</h2>
-                            <input type='password' name='oldPassword' placeholder="Old password" required><br>
-                            <input type='password' name='newPassword' placeholder="New password" required><br>
-                            <button class="btn blue-btn" type='submit'>Change password</button>
+                            <p class="h4">Change password</p>
+                            <input class="form-control mb-2" type='password' name='oldPassword' placeholder="Old password" required>
+                            <input class="form-control mb-2" type='password' name='newPassword' placeholder="New password" required>
+                            <button class="btn btn-primary" type='submit'>Change password</button>
                         </form>
                     </div>
-                    <br>
-                    <button class='btn red-btn btn-small' onclick="window.location.href='logout.php'">Log out</button>
                 </div>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
     <?php
 
     // change password

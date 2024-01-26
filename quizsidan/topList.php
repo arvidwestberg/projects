@@ -86,7 +86,8 @@ $numberOne = 0;
 <div class="container" style="display: none;" id="avrageScore">
     <div class="row rounded-top-3 bg-primary text-light text-center">
         <div onclick="minus()" class="col m-auto py-3 rounded-top-3 rounded-end-0 h6 topTenBtn">
-            <i class="bi bi-caret-left-fill"></i> </div>
+            <i class="bi bi-caret-left-fill"></i>
+        </div>
         <div class="col-7 m-auto">
             Top 5 (Genomsmittspoäng)
         </div>
@@ -106,12 +107,17 @@ $numberOne = 0;
 
     <?php
     $counter = 0;
+    $rows = count($users);
     foreach ($users as $user) {
         // every other row should have a different background color
         if ($counter % 2 == 0) {
-            echo "<div class='row bg-secondary-subtle align-items-center text-center border border-top-0'>";
+            echo "<div id='rowGenomsnitt" . $counter . "' class='row bg-secondary-subtle align-items-center text-center border border-top-0'>";
         } else {
-            echo "<div class='row text-center border border-top-0'>";
+            echo "<div id='rowGenomsnitt" . $counter . "' class='row text-center border border-top-0'>";
+        }
+        if ($counter == $rows - 1) {
+            // add border radius to the last row
+            echo "<script>document.getElementById('rowGenomsnitt" . $counter . "').classList.add('rounded-bottom-3');</script>";
         }
         echo "<div class='col py-2'>";
         echo $user['username'];
@@ -147,7 +153,8 @@ $numberOne = 0;
 <div class="container" style="display: none;" id="fastestTime">
     <div class="row rounded-top-3 bg-primary text-light text-center">
         <div onclick="minus()" class="col m-auto py-3 rounded-top-3 rounded-end-0 h6 topTenBtn">
-            <i class="bi bi-caret-left-fill"></i> </div>
+            <i class="bi bi-caret-left-fill"></i>
+        </div>
         <div class="col-7 m-auto">
             Top 5 (Snabbast per fråga)
         </div>
@@ -168,11 +175,16 @@ $numberOne = 0;
     <?php
 
     $counter = 0;
+    $rows = count($users);
     foreach ($users as $user) {
         if ($counter % 2 == 0) {
-            echo "<div class='row bg-secondary-subtle align-items-center text-center border border-top-0'>";
+            echo "<div id='rowsFastest" . $counter . "' class='row bg-secondary-subtle align-items-center text-center border border-top-0'>";
         } else {
-            echo "<div class='row text-center border border-top-0'>";
+            echo "<div id='rowsFastest" . $counter . "' class='row text-center border border-top-0'>";
+        }
+        if ($counter == $rows - 1) {
+            // add border radius to the last row
+            echo "<script>document.getElementById('rowsFastest" . $counter . "').classList.add('rounded-bottom-3');</script>";
         }
         echo "<div class='col py-2'>";
         echo $user['username'];

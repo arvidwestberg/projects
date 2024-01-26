@@ -19,7 +19,7 @@ include('check_login.php');
 
 </head>
 
-<body>
+<body class="pt-5 mt-5">
     <?php
     include('header.php');
 

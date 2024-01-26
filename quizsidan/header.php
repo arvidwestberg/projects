@@ -77,7 +77,3 @@ if (isset($_SESSION['theme'])) {
     </div>
     </div>
 </nav>
-<br>
-<br>
-<br>
-<br>
