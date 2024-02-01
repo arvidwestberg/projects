@@ -17,6 +17,5 @@ function updateTable() {
         element.style.display = "none";
     }
     );
-
-    arr[value % (arr.length)].style.display = "table";
+    arr[value % (arr.length)].style.display = "block";
 }

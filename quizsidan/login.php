@@ -3,21 +3,25 @@ $dontShowConnectionMsg = true;
 include('dbconnection.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html data-bs-theme="dark" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logga in</title>
-    <link rel="stylesheet" href="style.css?">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </head>
 
-<body>
+<body class="d-flex align-items-center py-5 mt-5">
     <?php
     include('header.php');
-    echo "<a href='../index.php'><-- Tillbaka</a>";
 
-    echo "<table class='align-top'><tr><td class='halfScreen'>";
     try {
 
         if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -29,7 +33,6 @@ include('dbconnection.php');
             $res = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($res !== false && password_verify($password, $res['password'])) {
-                session_start();
                 $_SESSION['username'] = $username;
                 $_SESSION['admin'] = $res['admin'];
                 $_SESSION['password'] = $password;
@@ -40,7 +43,7 @@ include('dbconnection.php');
                 $stmt = $dbconn->prepare($sql);
                 $data = array($username);
                 $stmt->execute($data);
-                header("Location: index.php");
+                echo "<script>window.location.href = 'index.php';</script>";
             } else {
                 echo "<script>alert('Fel användarnamn eller lösenord!')</script>";
             }
@@ -49,24 +52,41 @@ include('dbconnection.php');
         echo $sql . "<br />" . $e->getMessage();
     }
     ?>
-    <div class="userInput inputLarge w50">
-        <form method="post" action="">
-            <input type="text" name="username" placeholder="Användarnamn" required><br>
-            <input type="password" name="password" placeholder="Lösenord" required><br>
-            <button class="btn blue-btn" type="submit">Logga in </button>
-        </form>
-        <div class="mb-20">
-<!--             <a style="font-size: 14px; text-decoration: none; font-weight:lighter;" href="forgotten_password.php">Glömt lösenord?</a>
- -->        </div>
-        <hr class="mb-20">
-        <button class="btn green-btn w-fit" onclick="window.location.href='register.php'">Registrera nytt konto</button>
-    </div>
-    <?php
-    echo "</td><td class='halfScreen'>";
-    include('topTen.php');
-    echo "</td></tr></table>";
+    <main class="form-signin w-100 m-auto">
 
-    ?>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-sm m-auto">
+                    <form method="POST" action="">
+                        <br>
+
+                        <h1 class="h3 mb-3 fw-normal">Logga in</h1>
+
+                        <div class="form-floating">
+                            <input type="username" class="form-control" name="username" id="floatingInput" required placeholder="Användarnamn">
+                            <label for="floatingInput">Användarnamn</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" name="password" id="floatingPassword" required placeholder="Lösenord">
+                            <label for="floatingPassword">Lösenord</label>
+                        </div>
+                        <button class="btn btn-primary w-100 py-2" type="submit">Logga in</button>
+                    </form>
+                    <div class="mt-1">
+
+                        <p class="small">Har du inget konto? <a class="link-opacity-75-hover" href="register.php">Skapa ett konto här</a></p>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <?php
+
+                    include('topList.php')
+                    ?>
+
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
