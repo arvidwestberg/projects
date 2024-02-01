@@ -12,6 +12,11 @@ include('check_login.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View tables</title>
     <link rel="stylesheet" href="style.css?">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </head>
 
 <body>
@@ -78,7 +83,7 @@ include('check_login.php');
                 echo "<input type='hidden' name='row' value='$row[id]'>";
                 echo "<input type='hidden' name='deletePost' value='true'>";
                 echo "<input type='hidden' name='website' value='view_table.php'>";
-                echo "<button class='btn red-btn btn-small m-auto' type='submit' name='table' value='$table'>Delete</button>";
+                echo "<button class='btn btn-danger py-0 btn-small m-auto' type='submit' name='table' value='$table'>Delete</button>";
                 echo "</td>";
                 echo "</tr>";
                 echo "</form>";
