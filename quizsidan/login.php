@@ -3,7 +3,7 @@ $dontShowConnectionMsg = true;
 include('dbconnection.php');
 ?>
 <!DOCTYPE html>
-<html data-bs-theme="dark" lang="en">
+<html data-bs-theme="dark" lang="en" class="pt-5">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,7 @@ include('dbconnection.php');
     <script src="index.js"></script>
 </head>
 
-<body class="d-flex align-items-center py-5 mt-5">
+<body class="d-flex align-items-center py-5">
     <?php
     include('header.php');
 
