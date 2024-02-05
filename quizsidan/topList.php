@@ -53,7 +53,7 @@ $numberOne = 0;
         echo "<div class='col py-2'>";
         echo $user['username'];
         if (isset($_SESSION['username']) && $user['username'] == $_SESSION['username']) {
-            echo " (Du)";
+            echo " (du)";
         }
         if ($numberOne == 0) {
             echo "&#128081;";
