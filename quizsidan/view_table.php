@@ -79,7 +79,7 @@ include('check_login.php');
                     echo "<td style='border: 1px solid black;'>$value</td>";
                 }
                 echo "<td style='border: 1px solid black;'>";
-                echo "<form action='delete_post.php' method='POST'>";
+                echo "<form action='delete_post.php' class='text-center' method='POST'>";
                 echo "<input type='hidden' name='row' value='$row[id]'>";
                 echo "<input type='hidden' name='deletePost' value='true'>";
                 echo "<input type='hidden' name='website' value='view_table.php'>";
